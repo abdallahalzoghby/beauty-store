@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Product - Pure Beauty</title>
+  
+  <!-- روابط ملفات CSS -->
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <link rel="stylesheet" type="text/css" href="css/responsive.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.css" />
+  
+  <!-- ملفات JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
+  
+  <!-- التنسيقات الداخلية الخاصة بباقي الصفحة (إذا رغبت بها) -->
+  <style>
+    /* باقي التنسيقات الخاصة بصفحة الكاروسيل للأقسام (يمكن تركها كما هي) */
+    .categories-carousel {
+      position: relative;
+      max-width: 1200px;
+      margin: 50px auto;
+      overflow: hidden;
+      padding: 20px 0;
+    }
+    .categories-list {
+      display: flex;
+      transition: transform 0.3s ease;
+    }
+    .category_item {
+      flex: 0 0 auto;
+      margin: 0 10px;
+      text-align: center;
+    }
+    .category_item img {
+      width: 300px;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 10px;
+      transition: transform 0.3s;
+    }
+    .category_item img:hover {
+      transform: scale(1.05);
+    }
+    .category_title {
+      margin-top: 10px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.3);
+      color: #fff;
+      font-size: 30px;
+      padding: 10px;
+      cursor: pointer;
+      z-index: 2;
+      border-radius: 50%;
+      user-select: none;
+    }
+    .arrow-left {
+      left: 10px;
+    }
+    .arrow-right {
+      right: 10px;
+    }
+    .arrow:hover {
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+    
+    .categories_section h1 {
+      text-align: center;
+      margin-top: 30px;
+      font-size: 32px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Mobile Navigation List -->
+  <div id="mobile-nav" class="mobile-nav">
+    <div class="container">
+      <span class="close-btn" id="menu-close">&times;</span>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="product.html">Product</a></li>
+      <li><a href="about.html">About</a></li>
+
+    </div>
+  </div>
+
+  <!-- Header Section -->
+  <header class="header_section">
+    <div class="container">
+      <nav class="navbar">
+        <a class="logo" href="index.html">
+          <img src="images/logo.png" alt="Pure Beauty Logo" />
+        </a>
+        <!-- تم حذف القائمة القديمة -->
+        <div class="header_icons">
+          <a href="cart.html"><img src="images/trolly-icon.png" alt="Cart Icon" /></a>
+          <a href="search.html"><img src="images/search-icon.png" alt="Search Icon" /></a>
+          <a href="favorites.html"><img src="images/star-icon.png" alt="Favorite Icon" /></a>
+          <!-- أيقونة القائمة (Hamburger) -->
+          <a href="#" id="menu-toggle"><i class="fa fa-bars"></i></a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- قسم صور الأقسام على شكل كاروسيل -->
+  <section class="categories_section">
+    <h1>Our Product Categories</h1>
+    <div class="categories-carousel">
+      <div class="arrow arrow-left" onclick="moveCategories(-1)">&#10094;</div>
+      <div class="categories-list" id="categories-list">
+        <!-- القسم الأول -->
+        <div class="category_item">
+          <a href="hair-care.html">
+            <img src="images-1/hair.webp" alt="Hair Care" />
+            <div class="category_title">Hair Care</div>
+          </a>
+        </div>
+        <!-- القسم الثاني -->
+        <div class="category_item">
+          <a href="face-care.html">
+            <img src="images-1/Face.webp" alt="Face Care" />
+            <div class="category_title">Face Care</div>
+          </a>
+        </div>
+        <!-- القسم الثالث -->
+        <div class="category_item">
+          <a href="body-care.html">
+            <img src="images-1/Body.webp" alt="Body Care" />
+            <div class="category_title">Body Care</div>
+          </a>
+        </div>
+        <!-- القسم الرابع -->
+        <div class="category_item">
+          <a href="foot-care.html">
+            <img src="images-1/Foot.webp" alt="Foot Care" />
+            <div class="category_title">Foot Care</div>
+          </a>
+        </div>
+        <!-- القسم الخامس -->
+        <div class="category_item">
+          <a href="miscellaneous.html">
+            <img src="images-1/Miscellaneous.webp" alt="Miscellaneous" />
+            <div class="category_title">Miscellaneous</div>
+          </a>
+        </div>
+      </div>
+      <div class="arrow arrow-right" onclick="moveCategories(1)">&#10095;</div>
+    </div>
+  </section>
+
+  <!-- سكربت لتحريك الكاروسيل -->
+  <script>
+    let offset = 0; // لمعرفة مقدار التحريك
+    function moveCategories(direction) {
+      const list = document.getElementById('categories-list');
+      const itemWidth = 320; // نفترض أن عرض كل عنصر مع الهوامش حوالي 320 بكسل
+      offset += direction * -itemWidth;
+      list.style.transform = `translateX(${offset}px)`;
+    }
+  </script>
+
+  <!-- Footer Section -->
+  <footer class="footer_section">
+    <div class="container">
+      <p>&copy; 2025 Pure Beauty. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- سكربت jQuery لتفعيل القائمة المنبثقة -->
+  <script>
+    $(document).ready(function(){
+      $("#menu-toggle").click(function(e){
+        e.preventDefault();
+        $("#mobile-nav").slideToggle();
+      });
+      $("#menu-close").click(function(e){
+        e.preventDefault();
+        $("#mobile-nav").slideUp();
+      });
+    });
+  </script>
+</body>
+</html>

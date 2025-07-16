@@ -1,0 +1,463 @@
+/* ========================================
+   Global Settings
+======================================== */
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    background: #f9f9f9;
+  }
+  
+  h1, h2, h3 {
+    margin: 0;
+    font-weight: bold;
+    color: #444;
+  }
+  
+  a {
+    color: #007BFF;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  a:hover {
+    color: #0056b3;
+  }
+  
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* ========================================
+     Header Section
+  ======================================== */
+  .header_section {
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 15px 0;
+  }
+  
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .navbar_menu {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
+  
+  .navbar_menu li {
+    display: inline-block;
+  }
+  
+  .navbar_menu a {
+    font-size: 16px;
+    color: #333;
+    padding: 5px 10px;
+  }
+  
+  .navbar_menu a:hover {
+    color: #f75261;
+  }
+  
+  .header_icons {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+  }
+  
+  .header_icons img {
+    width: 24px;
+    height: auto;
+    transition: transform 0.3s ease;
+  }
+  
+  .header_icons img:hover {
+    transform: scale(1.2);
+  }
+  
+  .logo img {
+    width: 120px;
+    height: auto;
+    transition: transform 0.3s ease;
+  }
+  
+  .logo img:hover {
+    transform: scale(1.05);
+  }
+  
+  /* ========================================
+     Banner Section
+  ======================================== */
+  /* مثال لتدرج وردي فاتح: يمكنك تغييره كما تشاء */
+  .banner_section {
+    background: linear-gradient(to right, #ffc0cb, #fff5f8);
+    position: relative;
+    text-align: center;
+    color: #333;
+    padding-bottom: 20px; /* بعض المساحة أسفل الكاروسيل */
+  }
+  
+  .banner_section h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .banner_section p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #555;
+  }
+  
+  .banner_section a {
+    background: #fff;
+    color: #f75261;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: all 0.3s ease;
+  }
+  
+  .banner_section a:hover {
+    background: #f75261;
+    color: #fff;
+  }
+  
+  /* ========================================
+     Carousel Controls (التصميم الجديد)
+  ======================================== */
+  .carousel-control-prev,
+  .carousel-control-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5); /* خلفية شبه شفافة */
+    color: #ff69b4; /* لون الأيقونة/النص */
+    transition: background-color 0.3s, transform 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .carousel-control-prev:hover,
+  .carousel-control-next:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+    transform: scale(1.1);
+  }
+  
+  .carousel-control-prev i,
+  .carousel-control-next i {
+    font-size: 20px;
+  }
+  
+  .carousel-control-prev {
+    left: 20px;
+  }
+  
+  .carousel-control-next {
+    right: 20px;
+  }
+  
+  /* ========================================
+     Product Section
+  ======================================== */
+  .product_section {
+    padding: 60px 20px;
+    background: #fff;
+  }
+  
+  .product_section h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 36px;
+    color: #444;
+  }
+  
+  .product_grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+  }
+  
+  .product_item {
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background: #f9f9f9;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  
+  .product_item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .product_item h3 {
+    font-size: 18px;
+    margin-top: 10px;
+    color: #555;
+  }
+  
+  .product_item p {
+    color: #f75261;
+    font-weight: bold;
+  }
+  
+  .quantity_input {
+    width: 50px;
+    margin-top: 10px;
+    padding: 5px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+  }
+  
+  .buy_button {
+    margin-top: 10px;
+    background: #f75261;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .buy_button:hover {
+    background: #ff7a8c;
+  }
+  
+  /* لتوزيع العناصر في تبويبات (إذا استخدمت .tab-content) */
+  .tab-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  
+  .tab-content .product_item {
+    width: 200px;
+    margin: 10px;
+    text-align: center;
+  }
+  
+  /* ========================================
+     Contact Section
+  ======================================== */
+  .contact_section {
+    padding: 60px 20px;
+    background: #f9f9f9;
+    text-align: center;
+  }
+  
+  .contact_section h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #444;
+  }
+  
+  .contact_form {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .contact_form label {
+    display: block;
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px;
+    text-align: left;
+  }
+  
+  .contact_form input,
+  .contact_form textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 15px;
+  }
+  
+  .contact_form input:focus,
+  .contact_form textarea:focus {
+    border-color: #f75261;
+    outline: none;
+  }
+  
+  .contact_form button {
+    background: #f75261;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .contact_form button:hover {
+    background: #ff7a8c;
+  }
+  
+  /* ========================================
+     Footer Section
+  ======================================== */
+  .footer_section {
+    background: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+  }
+  
+  .footer_section p {
+    margin: 0;
+    font-size: 14px;
+  }
+  
+  .footer_section a {
+    color: #f75261;
+    text-decoration: underline;
+  }
+  
+  .footer_section a:hover {
+    color: #ff7a8c;
+  }
+  
+  /* ========================================
+     Owl Carousel (إذا كنت تستخدمه)
+  ======================================== */
+  .owl-carousel .owl-nav button.owl-prev,
+  .owl-carousel .owl-nav button.owl-next {
+    width: 45px;
+    height: 45px;
+    background: #f75261;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 18px;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+  }
+  
+  .owl-carousel .owl-nav button.owl-prev:hover,
+  .owl-carousel .owl-nav button.owl-next:hover {
+    background: #ff7a8c;
+    transform: scale(1.1);
+  }
+  
+  .owl-carousel .owl-nav button.owl-prev {
+    position: absolute;
+    left: -50px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  
+  .owl-carousel .owl-nav button.owl-next {
+    position: absolute;
+    right: -50px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  /* ========================================
+     Media Queries (إذا كنت تستخدمه)
+  ======================================== */
+  
+  /* قواعد التصميم العامة هنا... */
+
+/* التصميم المتجاوب للهواتف */
+@media (max-width: 768px) {
+  .banner_taital {
+    font-size: 1.8rem;
+  }
+  .taital_left, .taital_right {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+
+/* === Mobile Navigation (List) === */
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  z-index: 9999;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  padding: 20px 0;
+}
+.mobile-nav .close-btn {
+  float: right;
+  font-size: 2rem;
+  margin-right: 20px;
+  color: #f75261;
+  cursor: pointer;
+}
+.mobile-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+.mobile-nav ul li {
+  margin: 15px 0;
+}
+.mobile-nav ul li a {
+  font-size: 1.2rem;
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+.mobile-nav ul li a:hover {
+  color: #f75261;
+}
+
+/* === Hamburger Icon (Menu Toggle) === */
+#menu-toggle {
+  font-size: 1.8rem;
+  color: #333;
+  transition: transform 0.3s;
+}
+#menu-toggle:hover {
+  transform: scale(1.2);
+}
+
+/*---------------------------------*/
+
+
+.navbar_menu {
+  display: flex;
+  gap: 20px;         /* مسافة أفقية بين العناصر */
+  list-style: none;  /* إزالة النقاط من القائمة */
+  margin: 0;
+  padding: 0;
+}
+

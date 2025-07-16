@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shopping Cart - Pure Beauty</title>
+
+  <!-- Bootstrap 4 CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+  <style>
+    /* HEADER SECTION */
+    .header_section {
+      background: linear-gradient(to right, #f78ca0, #f9748f, #fd868c);
+      padding: 15px 0;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .navbar .logo img {
+      height: 100px;
+    }
+    .header_icons a {
+      margin-left: 15px;
+      font-size: 1.5rem;
+      text-decoration: none;
+      color: #fff;
+    }
+    .header_icons img {
+      width: 25px;
+      height: 25px;
+    }
+    /* MAIN CONTENT */
+    .main-content {
+      flex: 1;
+      background-color: #fff;
+      padding: 40px 0;
+    }
+    .cart_container {
+      max-width: 800px;
+      margin: 50px auto;
+      padding: 20px;
+      background-color: #f9f9f9;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .cart_container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 2rem;
+      font-weight: bold;
+      color: #444;
+    }
+    .cart_table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .cart_table thead {
+      background-color: #eee;
+    }
+    .cart_table th,
+    .cart_table td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #ddd;
+    }
+    .cart_table th {
+      font-weight: 600;
+    }
+    .cart_total {
+      text-align: right;
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+    /* زر حذف المنتج */
+    .delete_btn {
+      background-color: #ff5555;
+      color: #fff;
+      border: none;
+      padding: 6px 10px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    /* أزرار */
+    .cart_btn, .buy_btn {
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 5px;
+      font-size: 16px;
+      margin-top: 20px;
+    }
+    .cart_btn:hover, .buy_btn:hover {
+      background-color: #45a049;
+    }
+    /* FOOTER SECTION */
+    .footer_section {
+      background-color: #f8f8f8;
+      padding: 20px 0;
+      text-align: center;
+      box-shadow: 0 -1px 5px rgba(0,0,0,0.1);
+    }
+    .footer_section .social_icons {
+      margin-top: 10px;
+    }
+    .footer_section .social_icons a {
+      color: #555;
+      font-size: 1.5rem;
+      margin: 0 10px;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer_section .social_icons a:hover {
+      color: #d9534f;
+    }
+    .footer_section a.phone-link {
+      display: block;
+      color: #333;
+      font-size: 1.1rem;
+      margin-top: 5px;
+      text-decoration: none;
+    }
+    .footer_section a.phone-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="header_section">
+    <div class="container">
+      <nav class="navbar">
+        <a class="logo" href="index.html">
+          <img src="images/logo.png" alt="Pure Beauty Logo" />
+        </a>
+        <div class="header_icons">
+          <a href="#" onclick="history.back()" title="Go Back" style="margin-right:15px;">
+            <i class="fa fa-arrow-left" style="font-size:1.8rem;color:#333;"></i>
+          </a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main>
+    <div class="cart_container">
+      <h2>Shopping Cart</h2>
+      <table class="cart_table">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="cart-items"></tbody>
+      </table>
+      <div class="cart_total">
+        Total: $<span id="total-price">0</span>
+      </div>
+      <button class="cart_btn" onclick="clearCart()">Clear Cart</button>
+      <button class="buy_btn" onclick="buyCart()">Buy Now</button>
+    </div>
+  </main>
+
+  <!-- PRODUCT MODAL (لعرض تفاصيل المنتج عند النقر على صف من السلة) -->
+  <div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="productModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalProductName">Product Name</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="outline: none;">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <img id="modalProductImage" src="" alt="Product Image">
+          <p id="modalProductDescription"></p>
+          <p><strong>Price:</strong> <span id="modalProductPrice"></span> $</p>
+          <!-- Quantity + Add to Cart -->
+          <div class="d-flex align-items-center justify-content-center">
+            <div class="input-group mr-3">
+              <div class="input-group-prepend">
+                <button class="btn btn-outline-secondary btn-qty" type="button" onclick="changeQuantity(-1)">-</button>
+              </div>
+              <input type="number" id="modalQuantityInput" class="form-control text-center quantity-input" value="1" min="1" />
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary btn-qty" type="button" onclick="changeQuantity(1)">+</button>
+              </div>
+            </div>
+            <button id="modalAddToCartButton" class="btn add-to-cart-btn mr-2">
+              <i class="fas fa-shopping-cart"></i> Add to Cart
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer_section">
+    <div class="container">
+      <div class="social_icons">
+        <a href="https://facebook.com/yourpage" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://instagram.com/yourprofile" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://wa.me/201201148900" target="_blank"><i class="fab fa-whatsapp"></i></a>
+      </div>
+      <a class="phone-link" href="tel:01201148900">Call us: 01201148900</a>
+      <p>&copy; 2025 Pure Beauty. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    // عرض السلة من localStorage
+    function displayCart() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      const cartItemsContainer = document.getElementById('cart-items');
+      cartItemsContainer.innerHTML = '';
+      let totalPrice = 0;
+
+      cart.forEach((item, index) => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${item.productName}</td>
+          <td>$${item.price}</td>
+          <td>${item.quantity}</td>
+          <td>
+            <button class="delete_btn" onclick="removeFromCart(${index});">Delete</button>
+          </td>
+        `;
+        cartItemsContainer.appendChild(row);
+        totalPrice += item.price * item.quantity;
+      });
+      document.getElementById('total-price').textContent = totalPrice.toFixed(2);
+    }
+
+    function removeFromCart(index) {
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart.splice(index, 1);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      displayCart();
+    }
+
+    function clearCart() {
+      localStorage.removeItem('cart');
+      displayCart();
+    }
+
+    // زر الشراء: تجميع تفاصيل السلة وإرسال رسالة واتساب
+    function buyCart() {
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      if (cart.length === 0) {
+        alert("Your cart is empty!");
+        return;
+      }
+      let message = "I would like to order the following products:\n";
+      cart.forEach(item => {
+        message += `Product: ${item.productName}, Quantity: ${item.quantity}, Price: $${item.price}\n`;
+      });
+      const totalPrice = cart.reduce((total, item) => total + item.price * item.quantity, 0);
+      message += `Total Price: $${totalPrice.toFixed(2)}`;
+      
+      // ترميز الرسالة بشكل صحيح:
+      const encodedMessage = encodeURIComponent(message);
+      
+      // تأكد من أن رقم الهاتف بصيغة دولية صحيحة بدون علامات زائد أو فراغات، مثلاً:
+      const phoneNumber = "201203686502 "; // الرقم الدولي الصحيح
+      window.open("https://wa.me/" + phoneNumber + "?text=" + encodedMessage, "_blank");
+    }
+    
+    // المودال وعرض تفاصيل المنتج (عند النقر على صف من السلة)
+    function openModal(product) {
+      document.getElementById("modalProductName").innerText = product.name || "";
+      document.getElementById("modalProductDescription").innerText = product.description || "";
+      document.getElementById("modalProductPrice").innerText = product.price || "N/A";
+
+      const modalProductImage = document.getElementById("modalProductImage");
+      if (product.image && product.image.url) {
+        modalProductImage.src = "http://localhost:1337" + product.image.url;
+      } else {
+        modalProductImage.src = "images/default-placeholder.png";
+      }
+
+      document.getElementById("modalQuantityInput").value = 1;
+
+      document.getElementById("modalAddToCartButton").onclick = () => {
+        const quantityValue = parseInt(document.getElementById("modalQuantityInput").value, 10) || 1;
+        addToCart(product.name, product.price, quantityValue);
+      };
+
+      $("#productModal").modal("show");
+    }
+
+    function changeQuantity(amount) {
+      const input = document.getElementById("modalQuantityInput");
+      let currentVal = parseInt(input.value, 10);
+      if (isNaN(currentVal)) currentVal = 1;
+      let newVal = currentVal + amount;
+      if (newVal < 1) newVal = 1;
+      input.value = newVal;
+    }
+
+    function addToCart(productName, productPrice, quantity = 1) {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const existingProductIndex = cart.findIndex(item => item.productName === productName);
+      if (existingProductIndex > -1) {
+        cart[existingProductIndex].quantity += quantity;
+      } else {
+        cart.push({ productName, price: productPrice, quantity });
+      }
+      localStorage.setItem("cart", JSON.stringify(cart));
+      alert(`Added ${quantity} of "${productName}" to the cart!`);
+      displayCart();
+    }
+
+    // إضافة إلى المفضلة: ضمان تخزين الرابط الكامل للصورة
+    function addToFavorites(productName, productPrice, productImage) {
+      let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+      const existingIndex = favorites.findIndex(item => item.name === productName);
+      if (productImage && !productImage.startsWith("http")) {
+        productImage = "http://localhost:1337" + productImage;
+      }
+      if (existingIndex === -1) {
+        favorites.push({ name: productName, price: productPrice, image: productImage });
+      }
+      localStorage.setItem("favorites", JSON.stringify(favorites));
+      alert(`"${productName}" added to favorites!`);
+    }
+
+    window.addEventListener('load', () => { displayCart(); });
+    //http://localhost:1337/api/products?populate=*
+  </script>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

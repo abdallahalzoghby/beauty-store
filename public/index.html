@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Home - Yara Store</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="css/responsive.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.css">
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
+  <style>
+    /* تحسين القائمة المنبثقة */
+    .mobile-nav {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 300px; /* عرض محدود */
+      background: linear-gradient(to bottom, rgba(247, 140, 160, 0.95), rgba(253, 134, 140, 0.95));
+      z-index: 1000;
+      display: none;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      padding: 20px;
+    }
+    /* خلفية شبه شفافة عند فتح القائمة */
+    .mobile-nav::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgb(233, 76, 117);
+      z-index: -1;
+    }
+    .mobile-nav .container {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .mobile-nav ul {
+      padding: 0;
+      margin: 0;
+      width: 100%;
+    }
+    .mobile-nav ul li {
+      list-style: none;
+      text-align: center;
+      margin: 15px 0;
+    }
+    .mobile-nav ul li a {
+      display: block;
+      color: #d5656e;
+      font-size: 1.3rem;
+      text-decoration: none;
+      font-weight: 500;
+      font-family: 'Poppins', sans-serif;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 12px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease, color 0.3s ease;
+    }
+    .mobile-nav ul li a:hover {
+      color: #c1b38a;
+      transform: scale(1.05);
+    }
+    .close-btn {
+      position: absolute;
+      top: -15px;
+      right: -15px;
+      font-size: 2rem;
+      color: #100f0f;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+    .close-btn:hover {
+      color: #ff8c9a;
+    }
+    /* تحسين التصميم المتجاوب */
+    @media (max-width: 768px) {
+      .mobile-nav {
+        width: 250px;
+      }
+      .mobile-nav ul li a {
+        font-size: 1.2rem;
+        padding: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Mobile Navigation List -->
+  <div id="mobile-nav" class="mobile-nav">
+    <div class="container">
+      <span class="close-btn" id="menu-close">×</span>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="product.html">Product</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Header Section -->
+  <header class="header_section">
+    <div class="container">
+      <nav class="navbar">
+        <a class="logo" href="index.html">
+          <img src="images/logo.png" alt="Yara Store Logo">
+        </a>
+        <div class="header_icons">
+          <a href="cart.html"><img src="images/trolly-icon.png" alt="Cart Icon"></a>
+          <a href="search.html"><img src="images/search-icon.png" alt="Search Icon"></a>
+          <a href="favorites.html"><img src="images/star-icon.png" alt="Favorite Icon"></a>
+          <a href="#" id="menu-toggle"><i class="fa fa-bars"></i></a>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Banner Section -->
+  <div class="banner_section banner_bg">
+    <div class="container-fluid">
+      <div id="my_slider" class="carousel slide" data-ride="carousel" data-interval="1000">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="taital_main d-flex align-items-center fade-in">
+              <div class="taital_left col-md-6">
+                <h1 class="banner_taital">Enhance Your Natural Beauty</h1>
+                <div class="read_bt">
+                  <a href="product.html" class="btn btn-lg btn-success">Shop Now</a>
+                </div>
+              </div>
+              <div class="taital_right col-md-6 text-center">
+                <img src="images/zoghby.png" alt="Skincare Image" class="img-fluid mb-3 fixed-image">
+                <h3 style="color: #f75261; font-weight: bold;">Pure Natural Ingredients</h3>
+                <p style="font-size: 1.1rem; color: #555;">
+                  Experience the purity of nature with our organic skincare products crafted to nurture and revitalize your skin.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="taital_main d-flex align-items-center fade-in">
+              <div class="taital_left col-md-6">
+                <h1 class="banner_taital">Discover Natural Beauty</h1>
+                <div class="read_bt">
+                  <a href="product.html" class="btn btn-lg btn-success">Shop Now</a>
+                </div>
+              </div>
+              <div class="taital_right col-md-6 text-center">
+                <img src="images/zoghby2.png" alt="Product Image" class="img-fluid mb-3 fixed-image">
+                <h3 style="color: #f75261; font-weight: bold;">Latest Trends in Beauty</h3>
+                <p style="font-size: 1.1rem; color: #555;">
+                  Explore our latest collection of beauty products designed to keep you ahead of the trends.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="taital_main d-flex align-items-center fade-in">
+              <div class="taital_left col-md-6">
+                <h1 class="banner_taital">Healthy Skin, Happy Life</h1>
+                <div class="read_bt">
+                  <a href="product.html" class="btn btn-lg btn-success">Shop Now</a>
+                </div>
+              </div>
+              <div class="taital_right col-md-6 text-center">
+                <img src="images/zoghby3.png" alt="Product Image" class="img-fluid mb-3 fixed-image">
+                <h3 style="color: #f75261; font-weight: bold;">Radiant and Healthy Skin</h3>
+                <p style="font-size: 1.1rem; color: #555;">
+                  Embrace a lifestyle of wellness with our products designed to give you radiant, healthy skin.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Intro Section -->
+  <section class="intro_section">
+    <div class="container">
+      <h2>Welcome to Yara Store</h2>
+      <p>
+        Discover a wide range of natural and organic beauty products that nurture your skin and hair. Experience the best of self-care with our carefully selected items made with love and passion.
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer class="footer_section">
+    <div class="container">
+      <p>© 2025 Yara Store. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- jQuery Script لتفعيل القائمة المنبثقة -->
+  <script>
+    $(document).ready(function(){
+      $("#menu-toggle").click(function(e){
+        e.preventDefault();
+        $("#mobile-nav").slideToggle();
+      });
+      $("#menu-close").click(function(e){
+        e.preventDefault();
+        $("#mobile-nav").slideUp();
+      });
+    });
+  </script>
+</body>
+</html>
