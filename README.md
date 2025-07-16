@@ -52,7 +52,9 @@ beauty-store/
    ```bash
    git clone https://github.com/abdallahalzoghby/beauty-store.git
    cd beauty-store
-### nmp run develop
+---   
+### to run 
+   nmp run develop
 
 نسخ
 تحرير
