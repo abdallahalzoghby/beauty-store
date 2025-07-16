@@ -28,19 +28,14 @@ A clean, modern, and responsive e-commerce website for a beauty and cosmetics st
 ## 📁 Project Structure
 
 beauty-store/
-├── index.html               # Main HTML file (Homepage)
+├── index.html
 ├── css/
-│   └── styles.css           # Website styling
+│ └── styles.css
 ├── js/
-│   └── main.js              # Interactivity and cart logic
+│ └── main.js
 ├── images/
-│   └── (product images)     # All product and design visuals
-├── assets/
-│   └── (screenshots)        # Screenshots for README or documentation
-├── backend/ *(optional)*
-│   ├── app.js               # Server logic if using Node.js
-│   └── api/                 # Backend API routes
-└── README.md                # Project overview and setup instructions
+    └── (product images)
+
 
 
 ---
