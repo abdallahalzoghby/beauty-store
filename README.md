@@ -11,7 +11,7 @@ A clean, modern, and responsive e-commerce website for a beauty and cosmetics st
 - **Shopping Cart**: Add/remove items, view cart with total price.  
 - **Responsive Design**: Compatible with desktop, tablet, and mobile screens.  
 - **Animated UI**: Smooth transitions for cart updates and product interactions.  
-- _Optional:_ **Checkout flow**, **user authentication**, **backend integration with REST API**.
+
 
 ---
 
